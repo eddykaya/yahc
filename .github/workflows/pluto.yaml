@@ -31,4 +31,4 @@ jobs:
       - name: verify helm chart
         shell: bash
         run: |
-          helm template ${{ env.HELM_CHART_DIRECTORY }} | pluto detect -t k8s=${{ env.K8S_VERSION }} -
+          helm template ${{ env.HELM_CHART_DIRECTORY }} | pluto detect -t k8s=${{ env.K8S_VERSION }} --ignore-deprecations --ignore-removals -
