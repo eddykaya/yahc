@@ -14,21 +14,9 @@ jobs:
       - name: Check out the repo
         uses: actions/checkout@v3
 
-      - name: Download Pluto
-        shell: bash
-        run: |
-          wget https://github.com/FairwindsOps/pluto/releases/download/v${{ env.PLUTO_VERSION }}/pluto_${{ env.PLUTO_VERSION }}_linux_amd64.tar.gz -O - | tar -xz
-          mv pluto /usr/local/bin/pluto
-          chmod +x /usr/local/bin/pluto
-
-      - name: Download helm
-        shell: bash
-        run: |
-          curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
-          chmod +x get_helm.sh
-          ./get_helm.sh
-
-      - name: verify helm chart
-        shell: bash
-        run: |
-          helm template ${{ env.HELM_CHART_DIRECTORY }} | pluto detect -t k8s=${{ env.K8S_VERSION }} --ignore-deprecations --ignore-removals -
+      - name: Check deprecated k8s APIs
+        uses: eddykaya/helm-pluto-github-action@0.0.1
+        with:
+          PLUTO_VERSION: 5.6.1
+          K8S_VERSION: 1.24.8
+          HELM_CHART_DIRECTORY: helm/charts/yahc
