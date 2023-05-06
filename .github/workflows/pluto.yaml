@@ -2,11 +2,6 @@ name: pluto detection test
 
 on: workflow_dispatch
 
-env:
-  PLUTO_VERSION: 5.16.1
-  K8S_VERSION: v1.24.8
-  HELM_CHART_DIRECTORY: helm/charts/yahc
-
 jobs:
   pluto_detect:
     runs-on: ubuntu-latest
@@ -17,6 +12,6 @@ jobs:
       - name: Check deprecated k8s APIs
         uses: eddykaya/helm-pluto-github-action@0.0.2
         with:
-          PLUTO_VERSION: 5.6.1
+          PLUTO_VERSION: 5.16.1
           K8S_VERSION: 1.24.8
           HELM_CHART_DIRECTORY: helm/charts/yahc
