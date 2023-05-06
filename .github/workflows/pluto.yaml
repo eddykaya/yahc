@@ -13,5 +13,5 @@ jobs:
         uses: eddykaya/helm-pluto-github-action@0.0.2
         with:
           PLUTO_VERSION: 5.16.1
-          K8S_VERSION: 1.24.8
+          K8S_VERSION: v1.24.8
           HELM_CHART_DIRECTORY: helm/charts/yahc
