@@ -15,7 +15,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Check deprecated k8s APIs
-        uses: eddykaya/helm-pluto-github-action@0.0.1
+        uses: eddykaya/helm-pluto-github-action@0.0.2
         with:
           PLUTO_VERSION: 5.6.1
           K8S_VERSION: 1.24.8
